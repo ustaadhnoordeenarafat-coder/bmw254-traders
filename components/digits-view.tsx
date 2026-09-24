@@ -53,7 +53,7 @@ function getDigitTradeTypeOptions(
     { value: 'matches-differs', label: localize('Matches/Differs') },
     { value: 'over-under', label: localize('Over/Under') },
     { value: 'even-odd', label: localize('Even/Odd') },
-  ];
+  ];{ value: 'rise-fall', label: localize('Rise/Fall') },
 }
 
 // Edit-mode stand-in for the login prompt's auth handlers — same rule as the
