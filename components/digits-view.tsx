@@ -330,7 +330,68 @@ export function DigitsView({
         pinBuy={pinBuy}
       />
     ) : null;
+const DigitBotPanel = () => {
+  const [running, setRunning] = React.useState(false);
+  const [targetDigit, setTargetDigit] = React.useState(5);
+  const [stake, setStake] = React.useState(1);
+  const [maxTrades, setMaxTrades] = React.useState(5);
 
+  return (
+    <div className="mx-4 my-4 rounded-xl border border-gray-700 bg-gray-900 p-4">
+      <h2 className="mb-3 text-lg font-bold text-white">
+        Digit Bot
+      </h2>
+
+      <div className="grid grid-cols-2 gap-3">
+        <label className="text-sm text-gray-300">
+          Target digit
+          <input
+            type="number"
+            min="0"
+            max="9"
+            value={targetDigit}
+            onChange={(e) => setTargetDigit(Number(e.target.value))}
+            className="mt-1 w-full rounded-lg bg-gray-800 p-2 text-white"
+          />
+        </label>
+
+        <label className="text-sm text-gray-300">
+          Stake
+          <input
+            type="number"
+            min="0.35"
+            value={stake}
+            onChange={(e) => setStake(Number(e.target.value))}
+            className="mt-1 w-full rounded-lg bg-gray-800 p-2 text-white"
+          />
+        </label>
+
+        <label className="text-sm text-gray-300">
+          Max trades
+          <input
+            type="number"
+            min="1"
+            value={maxTrades}
+            onChange={(e) => setMaxTrades(Number(e.target.value))}
+            className="mt-1 w-full rounded-lg bg-gray-800 p-2 text-white"
+          />
+        </label>
+      </div>
+
+      <button
+        type="button"
+        onClick={() => setRunning((value) => !value)}
+        className="mt-4 w-full rounded-lg bg-green-600 px-4 py-3 font-bold text-white"
+      >
+        {running ? "Stop Bot" : "Start Bot"}
+      </button>
+
+      <p className="mt-3 text-center text-sm text-gray-400">
+        Status: {running ? "Running" : "Stopped"}
+      </p>
+    </div>
+  );
+};
   return (
     <main
       className={`flex flex-col max-lg:h-dvh max-lg:overflow-y-auto lg:overflow-visible ${
